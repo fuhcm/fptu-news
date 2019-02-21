@@ -4,7 +4,11 @@
       <p v-if="loading">Loading...</p>
       <p v-if="errored">Error!</p>
 
-      <v-card class="card-item" v-for="post in posts" v-bind:key="post.guid">
+      <v-card
+        class="card-item"
+        v-for="post in listBatched"
+        v-bind:key="post.guid"
+      >
         <v-img :src="post.thumbnail">
           <v-container fill-height fluid pa-2>
             <v-layout fill-height>
@@ -33,6 +37,12 @@
           </v-btn>
         </v-card-actions>
       </v-card>
+
+      <div class="text-xs-center" style="margin-bottom: 1rem;">
+        <v-btn round color="primary" dark v-on:click="loadMore"
+          >Load more posts</v-btn
+        >
+      </div>
     </v-flex>
   </v-layout>
 </template>
@@ -45,8 +55,19 @@ export default {
     return {
       posts: [],
       loading: true,
-      errored: false
+      errored: false,
+      batch: 10
     };
+  },
+  computed: {
+    listBatched: function() {
+      return this.posts.slice(0, this.batch);
+    }
+  },
+  methods: {
+    loadMore: function() {
+      this.batch += 10;
+    }
   },
   mounted() {
     axios

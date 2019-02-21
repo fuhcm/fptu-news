@@ -7,7 +7,7 @@
       </v-toolbar-title>
       <v-spacer></v-spacer>
       <v-btn flat href="https://fptu.tech" target="_blank">
-        <span class="mr-2">Homepage</span>
+        <span class="mr-2">Home</span>
       </v-btn>
     </v-toolbar>
 
