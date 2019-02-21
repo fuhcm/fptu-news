@@ -23,4 +23,4 @@ COPY --from=builder /root/src/app/dist/ /usr/share/nginx/html
 # docker build -t fptu-news .
 
 # This is docker run command:
-# docker run -d --name fptu-news -p 3001:3000 fptu-news:latest
+# docker run -d --name fptu-news -p 1002:80 fptu-news:latest
